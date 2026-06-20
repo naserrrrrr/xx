@@ -1,0 +1,87 @@
+@import 'leaflet/dist/leaflet.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: 'Cairo', system-ui, sans-serif;
+    background: #f6f5fb;
+    color: #1b1830;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background: #6d5ef6;
+    color: #fff;
+  }
+}
+
+@layer components {
+  /* زر أساسي */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 cursor-pointer font-extrabold text-white
+      bg-primary-gradient border-0 rounded-btn shadow-btn transition-all duration-200 ease-smooth;
+  }
+  .btn-primary:hover {
+    box-shadow: 0 14px 30px rgba(109, 94, 246, 0.45);
+    transform: translateY(-2px);
+  }
+  .btn-primary:disabled {
+    @apply opacity-60 cursor-not-allowed;
+    transform: none;
+  }
+
+  /* زر ثانوي */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 cursor-pointer font-bold
+      bg-white border-[1.5px] rounded-btn transition-all duration-200 ease-smooth;
+    color: #4b3fd4;
+    border-color: #e0dcf3;
+  }
+  .btn-secondary:hover {
+    border-color: #6d5ef6;
+    color: #4b3fd4;
+  }
+
+  /* بطاقة */
+  .card {
+    @apply bg-white border rounded-card shadow-card;
+    border-color: #edeaf6;
+  }
+
+  /* حقل إدخال */
+  .field {
+    @apply w-full font-semibold text-ink-soft bg-white border-[1.5px] rounded-field outline-none transition-all;
+    border-color: #e6e1f2;
+  }
+  .field:focus {
+    border-color: #9b6cf8;
+    box-shadow: 0 0 0 3px rgba(109, 94, 246, 0.12);
+  }
+
+  .hover-lift {
+    @apply transition-all duration-200 ease-smooth;
+  }
+  .hover-lift:hover {
+    transform: translateY(-4px);
+  }
+}
+
+/* اخفاء شريط التمرير الأفقي */
+.scrollx::-webkit-scrollbar {
+  height: 0;
+}
+
+/* Leaflet: ضمان ظهور الخريطة فوق المحتوى بشكل صحيح */
+.leaflet-container {
+  font-family: 'Cairo', sans-serif;
+  z-index: 0;
+}
